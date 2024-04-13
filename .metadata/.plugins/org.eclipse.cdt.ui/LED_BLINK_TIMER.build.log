@@ -1,0 +1,10 @@
+08:29:23 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER ****
+make -j4 all 
+arm-none-eabi-size  LED_BLINK_TIMER.elf 
+   text	   data	    bss	    dec	    hex	filename
+    976	      8	   1568	   2552	    9f8	LED_BLINK_TIMER.elf
+Finished building: default.size.stdout
+ 
+
+08:29:23 Build Finished. 0 errors, 0 warnings. (took 217ms)
+
