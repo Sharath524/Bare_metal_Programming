@@ -23,10 +23,10 @@
   \retval   none
 
 *******************************************************************************/
-//void TIM3_IRQHandler(void)
+//void TIM4_IRQHandler(void)
 //{
 //  /* if UIF flag is set */
-//  if(TIM3->SR & TIM_SR_UIF)
+//  if(TIM4->SR & TIM_SR_UIF)
 //  {
 ////    led_on = !led_on;
 //
@@ -47,7 +47,7 @@
 //    }
 //
 //    /* Clear the Interrupt Status */
-//    TIM3->SR &= ~TIM_SR_UIF;
+//    TIM4->SR &= ~TIM_SR_UIF;
 //  }
 //}
 
@@ -58,13 +58,13 @@ static void delay( uint32_t ms )
   for( i = 0; i <= ms; i++ )
   {
     /* Clear the count */
-    TIM3->TIM_CNT = 0;
+    TIM4->TIM_CNT = 0;
 
     /* Wait UIF to be set */
-    while((TIM3->TIM_SR & (1<<0)) == 0);    /* This will generate 1ms delay */
+    while((TIM4->TIM_SR & (1<<0)) == 0);    /* This will generate 1ms delay */
 
     /* Reset UIF */
-    TIM3->TIM_SR &= ~(1<<0);
+    TIM4->TIM_SR &= ~(1<<0);
   }
 }
 
@@ -103,12 +103,6 @@ static void SetSystemClockTo16Mhz(void)
   RCC->CFGR &= ~(3<<0);
 
 
-  /* Configure Flash prefetch, Instruction cache, Data cache and wait state */
-
-
-  /* Disabling HSE Clock*/
-//  RCC->CR &= ~RCC_CR_HSEON;
-
 
 }
 
@@ -123,19 +117,20 @@ static void SetSystemClockTo16Mhz(void)
 *******************************************************************************/
 static void ConfigureTimer3(void)
 {
-  /* Enable the APB clock FOR TIM3  */
+  /* Enable the APB clock FOR TIM4  */
 
-  RCC->APB1ENR |= (1<<1);
+  RCC->APB1ENR |= (1<<2);
   /* fCK_PSC / (PSC[15:0] + 1)
      (16 MHz / (15999+1)) = 1 KHz timer clock speed */
-  TIM3->TIM_PSC  = 15999;
+  /* Tried configuring the prescaler clock with 1MHz not working so switching with 1kHZ clock frequency*/
+  TIM4->TIM_PSC  = 15999;
 
   /* (1 KHz / 1000) = 1Hz = 1s */
   /* So, this will generate the 1s delay */
-  TIM3->TIM_ARR = 999;
+  TIM4->TIM_ARR = 999;
 
-  /* Finally enable TIM3 module */
-  TIM3->TIM_CR1 = (1<<0);
+  /* Finally enable TIM4 module */
+  TIM4->TIM_CR1 = (1<<0);
 }
 
 /***************************************************************************//**
@@ -157,10 +152,9 @@ int main(void)
   ConfigureTimer3();
 
   /* Enable the AHB clock all GPIO port C */
-
   RCC->AHB1ENR |= (1<<2);
   /* set all Port C as output */
-  GPIOC->MODER = 0x55555555;
+  GPIOC->MODER |= (1<<26);
 
   /* Endless loop */
   while(1)
@@ -171,9 +165,7 @@ int main(void)
 
 	      GPIOC->ODR |= (1<<13);
 
-
 	      /* Turn OFF the LED of PC13 */
-
 	    }
 	    else
 	    {
@@ -183,3 +175,14 @@ int main(void)
 	    delay(1);
   }
 }
+/* Reference: https://embetronicx.com/tutorials/microcontrollers/stm32/simple-stm32-timer-tutorial-bare-metal-with-registers/ */
+
+/* 						NOTE
+ *
+ * Here the Controller wants to continously check the UIF bit is HIGH or not
+ *
+ * That can be solved using TImer internal interrupt
+ *
+ * when the UIF is pulled HIGH the function will be executed until COntroller will be in ideal stage
+ *
+ * */

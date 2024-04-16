@@ -1,0 +1,10 @@
+10:30:04 **** Incremental Build of configuration Debug for project LED_BUTTON_EXT_IRQ ****
+make -j4 all 
+arm-none-eabi-size  LED_BUTTON_EXT_IRQ.elf 
+   text	   data	    bss	    dec	    hex	filename
+    684	      8	   1568	   2260	    8d4	LED_BUTTON_EXT_IRQ.elf
+Finished building: default.size.stdout
+ 
+
+10:30:04 Build Finished. 0 errors, 0 warnings. (took 224ms)
+

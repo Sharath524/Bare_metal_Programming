@@ -1,10 +1,17 @@
-08:29:23 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER ****
+20:01:43 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER ****
 make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "LED_BLINK_TIMER.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BLINK_TIMER\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_TIMER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_BLINK_TIMER.elf
+ 
 arm-none-eabi-size  LED_BLINK_TIMER.elf 
+arm-none-eabi-objdump -h -S LED_BLINK_TIMER.elf  > "LED_BLINK_TIMER.list"
    text	   data	    bss	    dec	    hex	filename
-    976	      8	   1568	   2552	    9f8	LED_BLINK_TIMER.elf
+    980	      8	   1568	   2556	    9fc	LED_BLINK_TIMER.elf
 Finished building: default.size.stdout
  
+Finished building: LED_BLINK_TIMER.list
+ 
 
-08:29:23 Build Finished. 0 errors, 0 warnings. (took 217ms)
+20:01:44 Build Finished. 0 errors, 0 warnings. (took 861ms)
 

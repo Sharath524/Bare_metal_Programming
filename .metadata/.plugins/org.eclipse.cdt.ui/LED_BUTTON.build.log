@@ -1,0 +1,24 @@
+09:53:58 **** Incremental Build of configuration Debug for project LED_BUTTON ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:23:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   23 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:40:19: warning: variable 'data' set but not used [-Wunused-but-set-variable]
+   40 |           uint8_t data =0;
+      |                   ^~~~
+arm-none-eabi-gcc -o "LED_BUTTON.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BUTTON\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BUTTON.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_BUTTON.elf
+ 
+arm-none-eabi-size  LED_BUTTON.elf 
+arm-none-eabi-objdump -h -S LED_BUTTON.elf  > "LED_BUTTON.list"
+   text	   data	    bss	    dec	    hex	filename
+    788	      8	   1568	   2364	    93c	LED_BUTTON.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_BUTTON.list
+ 
+
+09:53:59 Build Finished. 0 errors, 2 warnings. (took 869ms)
+

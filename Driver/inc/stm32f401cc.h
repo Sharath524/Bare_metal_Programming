@@ -30,7 +30,21 @@
 #define TIM4_BASEADDR (APB1_BASEADDR + 0x0800)
 #define TIM5_BASEADDR (APB1_BASEADDR + 0x0C00)
 
-#define TIM10_BASEADDR (APB2_BASEADDR + 0x4400)
+/*APB2 Mapped Registers*/
+
+#define TIM1_BASEADDR 	(APB2_BASEADDR + 0x0000)
+#define USART1_BASEADDR (APB2_BASEADDR + 0x1000)
+#define USART6_BASEADDR (APB2_BASEADDR + 0x1400)
+#define ADC1_BASEADDR 	(APB2_BASEADDR + 0x2000)
+#define SDI0_BASEADDR 	(APB2_BASEADDR + 0x2C00)
+#define SPI1_BASEADDR 	(APB2_BASEADDR + 0x3000)
+#define SPI4_BASEADDR 	(APB2_BASEADDR + 0x3400)
+#define SYSCFG_BASEADDR (APB2_BASEADDR + 0x3800)
+#define EXTI_BASEADDR 	(APB2_BASEADDR + 0x3C00)
+#define TIM9_BASEADDR 	(APB2_BASEADDR + 0x4000)
+#define TIM10_BASEADDR 	(APB2_BASEADDR + 0x4400)
+#define TIM11_BASEADDR 	(APB2_BASEADDR + 0x4800)
+
 
 #define RCC_BASEADDR (AHB1_BASEADDR + 0x3800)
 #define FLASH_R_BASE (AHB1_BASEADDR + 0x3C00)
@@ -50,7 +64,7 @@ typedef struct{
 
 }Gpiodef_t;
 
-#define GPIOA 	((Gpiodef_t*)GPIOA_BASEADDR)
+#define GPIOA ((Gpiodef_t*)GPIOA_BASEADDR)
 #define GPIOB ((Gpiodef_t*)GPIOB_BASEADDR)
 #define GPIOC ((Gpiodef_t*)GPIOC_BASEADDR)
 #define GPIOD ((Gpiodef_t*)GPIOD_BASEADDR)
@@ -103,43 +117,42 @@ typedef struct{
 }RCC_Refdef_t;
 
 #define RCC ((RCC_Refdef_t*)RCC_BASEADDR)
-_vo RCC_Refdef_t *Rcc = ((RCC_Refdef_t*)RCC_BASEADDR);
 
 
 /*Timer structure*/
 typedef struct
 {
-	_vo uint32_t TIM_CR1;
-	_vo uint32_t TIM_CR2;
-	_vo uint32_t TIM_SMCR;
-	_vo uint32_t TIM_DIER;
-	_vo uint32_t TIM_SR;
-	_vo uint32_t TIM_EGR;
-	_vo uint16_t TIM_CCMR1H;
-	_vo uint16_t TIM_CCMR1L;
-	_vo uint16_t TIM_CCMR2H;
-	_vo uint16_t TIM_CCMR2L;
-	_vo uint32_t TIM_CCER;
-	_vo uint32_t TIM_CNT;
-	_vo uint32_t TIM_PSC;
-	_vo uint32_t TIM_ARR;
+	_vo uint32_t CR1;
+	_vo uint32_t CR2;
+	_vo uint32_t SMCR;
+	_vo uint32_t DIER;
+	_vo uint32_t SR;
+	_vo uint32_t EGR;
+	_vo uint16_t CCMR1H;
+	_vo uint16_t CCMR1L;
+	_vo uint16_t CCMR2H;
+	_vo uint16_t CCMR2L;
+	_vo uint32_t CCER;
+	_vo uint32_t CNT;
+	_vo uint32_t PSC;
+	_vo uint32_t ARR;
 	uint32_t  	Reserved0;
-	_vo uint32_t TIM_CCR1;
-	_vo uint32_t TIM_CCR2;
-	_vo uint32_t TIM_CCR3;
-	_vo uint32_t TIM_CCR4;
+	_vo uint32_t CCR1;
+	_vo uint32_t CCR2;
+	_vo uint32_t CCR3;
+	_vo uint32_t CCR4;
 	uint32_t  	Reserved1;
-	_vo uint32_t TIM_DCR;
-	_vo uint32_t TIM_DMAR;
-	_vo uint32_t TIM_OR;
-
+	_vo uint32_t DCR;
+	_vo uint32_t DMAR;
+	_vo uint32_t OR;
 }Timer_Regdef_t;
 
 _vo Timer_Regdef_t *TIM2 = ((Timer_Regdef_t*)TIM10_BASEADDR);
 
+#define TIM2 ((Timer_Regdef_t*)TIM3_BASEADDR)
 #define TIM3 ((Timer_Regdef_t*)TIM3_BASEADDR)
-
-
+#define TIM4 ((Timer_Regdef_t*)TIM4_BASEADDR)
+#define TIM5 ((Timer_Regdef_t*)TIM5_BASEADDR)
 
 /**
   * @brief FLASH Registers
@@ -155,5 +168,37 @@ typedef struct
   _vo uint32_t OPTCR;    /*!< FLASH option control register ,  Address offset: 0x14 */
   _vo uint32_t OPTCR1;   /*!< FLASH option control register 1, Address offset: 0x18 */
 } FLASH_TypeDef;
-#define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
+
+
+typedef struct
+{
+	_vo uint32_t MEMRMP;  	/*!< SYSCFG memory remap register,   						Address offset: 0x00 */
+	_vo uint32_t PMC;     	/*!< SYSCFG peripheral mode configuration register,   		Address offset: 0x04 */
+	_vo uint32_t EXTICR1; 	/*!< SYSCFG external interrupt configuration register 1,   	Address offset: 0x08 */
+	_vo uint32_t EXTICR2; 	/*!< SYSCFG external interrupt configuration register 2,   	Address offset: 0x0C */
+	_vo uint32_t EXTICR3; 	/*!< SYSCFG external interrupt configuration register 3,   	Address offset: 0x10 */
+	_vo uint32_t EXTICR4; 	/*!< SYSCFG external interrupt configuration register 4,   	Address offset: 0x14 */
+	uint32_t Reserved0;  	/*!< SYSCFG access control register,   						Address offset: 0x18 */
+	uint32_t Reserved1;  	/*!< SYSCFG access control register,   						Address offset: 0x1C */
+	_vo uint32_t CMPCR;   	/*!< SYSCFG Compensation cell control register,   			Address offset: 0x20 */
+
+} SYSCFG_TypeDef;
+
+#define SYSCFG				((SYSCFG_TypeDef *) SYSCFG_BASEADDR)
+
+typedef struct
+{
+	_vo uint32_t IMR;  		/*!< EXTI Interrupt mask register,				Address offset: 0x00 */
+	_vo uint32_t EMR;   	/*!< EXTI Event mask register,   				Address offset: 0x04 */
+	_vo uint32_t RTSR; 		/*!< EXTI Rising trigger selection register,   	Address offset: 0x08 */
+	_vo uint32_t FTSR; 		/*!< EXTI Falling trigger selection register,   Address offset: 0x0C */
+	_vo uint32_t SWIER; 	/*!< EXTI Software interrupt event register,   	Address offset: 0x10 */
+	_vo uint32_t PR; 		/*!< EXTI Pending register,   					Address offset: 0x14 */
+} EXTI_TypeDef;
+
+#define EXTI				((EXTI_TypeDef *) EXTI_BASEADDR)
+
+
+
+
 #endif /* STM32F401CC_H_ */
