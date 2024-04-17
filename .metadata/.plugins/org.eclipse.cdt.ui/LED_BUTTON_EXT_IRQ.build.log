@@ -1,10 +1,20 @@
-10:30:04 **** Incremental Build of configuration Debug for project LED_BUTTON_EXT_IRQ ****
+07:54:07 **** Incremental Build of configuration Debug for project LED_BUTTON_EXT_IRQ ****
 make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+arm-none-eabi-gcc -o "LED_BUTTON_EXT_IRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BUTTON_EXT_IRQ\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BUTTON_EXT_IRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_BUTTON_EXT_IRQ.elf
+ 
 arm-none-eabi-size  LED_BUTTON_EXT_IRQ.elf 
+arm-none-eabi-objdump -h -S LED_BUTTON_EXT_IRQ.elf  > "LED_BUTTON_EXT_IRQ.list"
    text	   data	    bss	    dec	    hex	filename
-    684	      8	   1568	   2260	    8d4	LED_BUTTON_EXT_IRQ.elf
+    824	      8	   1568	   2400	    960	LED_BUTTON_EXT_IRQ.elf
 Finished building: default.size.stdout
  
+Finished building: LED_BUTTON_EXT_IRQ.list
+ 
 
-10:30:04 Build Finished. 0 errors, 0 warnings. (took 224ms)
+07:54:08 Build Finished. 0 errors, 1 warnings. (took 867ms)
 

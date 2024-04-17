@@ -58,13 +58,13 @@ static void delay( uint32_t ms )
   for( i = 0; i <= ms; i++ )
   {
     /* Clear the count */
-    TIM4->TIM_CNT = 0;
+    TIM4->CNT = 0;
 
     /* Wait UIF to be set */
-    while((TIM4->TIM_SR & (1<<0)) == 0);    /* This will generate 1ms delay */
+    while((TIM4->SR & (1<<0)) == 0);    /* This will generate 1ms delay */
 
     /* Reset UIF */
-    TIM4->TIM_SR &= ~(1<<0);
+    TIM4->SR &= ~(1<<0);
   }
 }
 
@@ -123,14 +123,14 @@ static void ConfigureTimer3(void)
   /* fCK_PSC / (PSC[15:0] + 1)
      (16 MHz / (15999+1)) = 1 KHz timer clock speed */
   /* Tried configuring the prescaler clock with 1MHz not working so switching with 1kHZ clock frequency*/
-  TIM4->TIM_PSC  = 15999;
+  TIM4->PSC  = 15999;
 
   /* (1 KHz / 1000) = 1Hz = 1s */
   /* So, this will generate the 1s delay */
-  TIM4->TIM_ARR = 999;
+  TIM4->ARR = 999;
 
   /* Finally enable TIM4 module */
-  TIM4->TIM_CR1 = (1<<0);
+  TIM4->CR1 = (1<<0);
 }
 
 /***************************************************************************//**

@@ -10,6 +10,12 @@
 #include <stdint.h>
 
 #define _vo volatile
+
+/*****************************Processor Based Register**************************************/
+
+#define NVIC_BASEADDR	0xE000E100
+
+
 /* Peripheral Base addresses*/
 //#define PERIPHERAL_BASEADDR 0x
 
@@ -48,6 +54,38 @@
 
 #define RCC_BASEADDR (AHB1_BASEADDR + 0x3800)
 #define FLASH_R_BASE (AHB1_BASEADDR + 0x3C00)
+
+
+
+/*****************************Processor Based Register structure**************************************/
+
+
+typedef struct{
+	_vo uint32_t ISER[8];
+    uint32_t RESERVED0[24];
+	_vo uint32_t ICER[8];
+    uint32_t RESERVED1[24];
+	_vo uint32_t ISPR[8];
+    uint32_t RESERVED2[24];
+	_vo uint32_t ICPR[8];
+    uint32_t RESERVED3[24];
+    _vo uint32_t IABR[8];                 /*!< Offset: 0x200 (R/W)  Interrupt Active bit Register           */
+	uint32_t RESERVED5[56];
+	_vo uint8_t IP[250];
+	_vo uint32_t STIR;
+
+}Nvicdef_t;
+
+#define NVIC ((Nvicdef_t*)NVIC_BASEADDR)
+
+
+
+
+
+
+
+
+
 
 /* structure for the GPIO*/
 typedef struct{

@@ -27,8 +27,9 @@ int main(void)
 	/*Enables the SYSCFG Clock*/
 	RCC->APB2ENR |= (1<<14);
 
-	/*Enables the source input of Port B Pin 0*/
-	SYSCFG->EXTICR1 |=(0<<4);
+	SYSCFG->EXTICR1 &= ~(15<<4);
+	/*Enables the source input of Port B Pin 0 External_interrupt 0 enabled*/
+	SYSCFG->EXTICR1 |= (1<<0);
 
 	/*Enables the GPIOB clock */
 	RCC->AHB1ENR |= (1<<1);
@@ -40,7 +41,7 @@ int main(void)
 	GPIOB->PUPDR &= ~(3<<0);
 
 	/*Pull_up to port b pin 0 */
-	GPIOB->PUPDR |= ~(1<<0);
+	GPIOB->PUPDR |= (1<<0);
 
 	/*Enable to port b pin 0  */
 	EXTI->IMR  |=(1<<0);
@@ -51,12 +52,9 @@ int main(void)
 	/* clears the rising edge event for the Portb pin 0*/
 	EXTI->RTSR &= ~(1<<0);
 
+	NVIC->IP[6] = (1 << 4);
 
-	/*
-		need to configure the below function in baremetal
-		NVIC_SetPriority(EXTI0_IRQn, 0);
-		NVIC_EnableIRQ(EXTI0_IRQn);
-	 */
+	NVIC->ISER[6>>5] |= (1 << (6 % 32));
 
 }
-/*Reference https://hackmd.io/@hrbenitez/158_2s2223_Int_Tim /
+/*Reference https://hackmd.io/@hrbenitez/158_2s2223_Int_Tim */
