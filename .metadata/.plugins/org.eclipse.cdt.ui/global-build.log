@@ -1,95 +1,17 @@
-18:37:11 **** Build of configuration Debug for project LED_BLINK_TIMER_IRQ ****
-make -j4 all 
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f401ccux.d" -MT"Startup/startup_stm32f401ccux.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f401ccux.o" "../Startup/startup_stm32f401ccux.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
-../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-      |    ^~~~~~~
-arm-none-eabi-gcc -o "LED_BLINK_TIMER_IRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BLINK_TIMER_IRQ\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_TIMER_IRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LED_BLINK_TIMER_IRQ.elf
- 
-arm-none-eabi-size  LED_BLINK_TIMER_IRQ.elf 
-arm-none-eabi-objdump -h -S LED_BLINK_TIMER_IRQ.elf  > "LED_BLINK_TIMER_IRQ.list"
-   text	   data	    bss	    dec	    hex	filename
-    980	      8	   1568	   2556	    9fc	LED_BLINK_TIMER_IRQ.elf
-Finished building: default.size.stdout
- 
-Finished building: LED_BLINK_TIMER_IRQ.list
- 
-18:38:49 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER_IRQ ****
-make -j4 all 
-arm-none-eabi-size  LED_BLINK_TIMER_IRQ.elf 
-   text	   data	    bss	    dec	    hex	filename
-    980	      8	   1568	   2556	    9fc	LED_BLINK_TIMER_IRQ.elf
-Finished building: default.size.stdout
- 
-18:39:38 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER_IRQ ****
+20:29:55 **** Incremental Build of configuration Debug for project GPIO_ReadAnalog_value ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+../Src/main.c:23:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   23 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
       |    ^~~~~~~
-arm-none-eabi-gcc -o "LED_BLINK_TIMER_IRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BLINK_TIMER_IRQ\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_TIMER_IRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LED_BLINK_TIMER_IRQ.elf
+arm-none-eabi-gcc -o "GPIO_ReadAnalog_value.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\GPIO_ReadAnalog_value\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_ReadAnalog_value.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: GPIO_ReadAnalog_value.elf
  
-arm-none-eabi-size  LED_BLINK_TIMER_IRQ.elf 
-arm-none-eabi-objdump -h -S LED_BLINK_TIMER_IRQ.elf  > "LED_BLINK_TIMER_IRQ.list"
+arm-none-eabi-size  GPIO_ReadAnalog_value.elf 
+arm-none-eabi-objdump -h -S GPIO_ReadAnalog_value.elf  > "GPIO_ReadAnalog_value.list"
    text	   data	    bss	    dec	    hex	filename
-    956	      8	   1568	   2532	    9e4	LED_BLINK_TIMER_IRQ.elf
+   5088	    100	   1900	   7088	   1bb0	GPIO_ReadAnalog_value.elf
 Finished building: default.size.stdout
  
-Finished building: LED_BLINK_TIMER_IRQ.list
- 
-18:40:17 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER_IRQ ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-      |    ^~~~~~~
-arm-none-eabi-gcc -o "LED_BLINK_TIMER_IRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BLINK_TIMER_IRQ\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_TIMER_IRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LED_BLINK_TIMER_IRQ.elf
- 
-arm-none-eabi-size  LED_BLINK_TIMER_IRQ.elf 
-arm-none-eabi-objdump -h -S LED_BLINK_TIMER_IRQ.elf  > "LED_BLINK_TIMER_IRQ.list"
-   text	   data	    bss	    dec	    hex	filename
-    972	      8	   1568	   2548	    9f4	LED_BLINK_TIMER_IRQ.elf
-Finished building: default.size.stdout
- 
-Finished building: LED_BLINK_TIMER_IRQ.list
- 
-18:40:43 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER_IRQ ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-      |    ^~~~~~~
-arm-none-eabi-gcc -o "LED_BLINK_TIMER_IRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BLINK_TIMER_IRQ\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_TIMER_IRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LED_BLINK_TIMER_IRQ.elf
- 
-arm-none-eabi-size  LED_BLINK_TIMER_IRQ.elf 
-arm-none-eabi-objdump -h -S LED_BLINK_TIMER_IRQ.elf  > "LED_BLINK_TIMER_IRQ.list"
-   text	   data	    bss	    dec	    hex	filename
-    960	      8	   1568	   2536	    9e8	LED_BLINK_TIMER_IRQ.elf
-Finished building: default.size.stdout
- 
-Finished building: LED_BLINK_TIMER_IRQ.list
- 
-18:45:45 **** Incremental Build of configuration Debug for project LED_BLINK_TIMER_IRQ ****
-make -j4 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-      |    ^~~~~~~
-arm-none-eabi-gcc -o "LED_BLINK_TIMER_IRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\LED_BLINK_TIMER_IRQ\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_TIMER_IRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: LED_BLINK_TIMER_IRQ.elf
- 
-arm-none-eabi-size  LED_BLINK_TIMER_IRQ.elf 
-arm-none-eabi-objdump -h -S LED_BLINK_TIMER_IRQ.elf  > "LED_BLINK_TIMER_IRQ.list"
-   text	   data	    bss	    dec	    hex	filename
-    972	      8	   1568	   2548	    9f4	LED_BLINK_TIMER_IRQ.elf
-Finished building: default.size.stdout
- 
-Finished building: LED_BLINK_TIMER_IRQ.list
+Finished building: GPIO_ReadAnalog_value.list
  

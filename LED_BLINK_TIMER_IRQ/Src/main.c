@@ -83,7 +83,6 @@ static void SetSystemClockTo16Mhz(void)
 static void ConfigureTimer3(void)
 {
   /* Enable the APB clock FOR TIM4  */
-
   RCC->APB1ENR |= (1<<2);
   /* fCK_PSC / (PSC[15:0] + 1)
      (16 MHz / (15999+1)) = 1 KHz timer clock speed */

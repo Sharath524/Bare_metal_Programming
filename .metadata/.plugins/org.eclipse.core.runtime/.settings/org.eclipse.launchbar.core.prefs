@@ -1,7 +1,9 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_TIMER,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BUTTON,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BUTTON_EXT_IRQ,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_TIMER_IRQ
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_TIMER,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BUTTON,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BUTTON_EXT_IRQ,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_TIMER_IRQ,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO_ReadAnalog_value
 eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO_ReadAnalog_value/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO_ReadAnalog_value/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_TIMER/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_TIMER/activeLaunchTarget=null\:---
