@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .comment      00000043  00000000  00000000  0001040c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   000004c1  00000000  00000000  0001044f  2**0
+ 13 .debug_info   000004b6  00000000  00000000  0001044f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00000113  00000000  00000000  00010910  2**0
+ 14 .debug_abbrev 00000113  00000000  00000000  00010905  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000060  00000000  00000000  00010a28  2**3
+ 15 .debug_aranges 00000060  00000000  00000000  00010a18  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 0000003e  00000000  00000000  00010a88  2**0
+ 16 .debug_rnglists 0000003e  00000000  00000000  00010a78  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00001047  00000000  00000000  00010ac6  2**0
+ 17 .debug_macro  000010b9  00000000  00000000  00010ab6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   000005b1  00000000  00000000  00011b0d  2**0
+ 18 .debug_line   000005b1  00000000  00000000  00011b6f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    0000426e  00000000  00000000  000120be  2**0
+ 19 .debug_str    000044a7  00000000  00000000  00012120  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  000000c0  00000000  00000000  0001632c  2**2
+ 20 .debug_frame  000000c0  00000000  00000000  000165c8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000068  00000000  00000000  000163ec  2**0
+ 21 .debug_line_str 00000068  00000000  00000000  00016688  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -96,13 +96,13 @@ static void delay( uint32_t ms )
  80001e0:	e012      	b.n	8000208 <delay+0x34>
   {
     /* Clear the count */
-    TIM4->TIM_CNT = 0;
+    TIM4->CNT = 0;
  80001e2:	4b0f      	ldr	r3, [pc, #60]	; (8000220 <delay+0x4c>)
  80001e4:	2200      	movs	r2, #0
  80001e6:	625a      	str	r2, [r3, #36]	; 0x24
 
     /* Wait UIF to be set */
-    while((TIM4->TIM_SR & (1<<0)) == 0);    /* This will generate 1ms delay */
+    while((TIM4->SR & (1<<0)) == 0);    /* This will generate 1ms delay */
  80001e8:	bf00      	nop
  80001ea:	4b0d      	ldr	r3, [pc, #52]	; (8000220 <delay+0x4c>)
  80001ec:	691b      	ldr	r3, [r3, #16]
@@ -111,7 +111,7 @@ static void delay( uint32_t ms )
  80001f4:	d0f9      	beq.n	80001ea <delay+0x16>
 
     /* Reset UIF */
-    TIM4->TIM_SR &= ~(1<<0);
+    TIM4->SR &= ~(1<<0);
  80001f6:	4b0a      	ldr	r3, [pc, #40]	; (8000220 <delay+0x4c>)
  80001f8:	691b      	ldr	r3, [r3, #16]
  80001fa:	4a09      	ldr	r2, [pc, #36]	; (8000220 <delay+0x4c>)
@@ -231,20 +231,20 @@ static void ConfigureTimer3(void)
   /* fCK_PSC / (PSC[15:0] + 1)
      (16 MHz / (15999+1)) = 1 KHz timer clock speed */
   /* Tried configuring the prescaler clock with 1MHz not working so switching with 1kHZ clock frequency*/
-  TIM4->TIM_PSC  = 15999;
+  TIM4->PSC  = 15999;
  800029c:	4b08      	ldr	r3, [pc, #32]	; (80002c0 <ConfigureTimer3+0x34>)
  800029e:	f643 627f 	movw	r2, #15999	; 0x3e7f
  80002a2:	629a      	str	r2, [r3, #40]	; 0x28
 
   /* (1 KHz / 1000) = 1Hz = 1s */
   /* So, this will generate the 1s delay */
-  TIM4->TIM_ARR = 999;
+  TIM4->ARR = 999;
  80002a4:	4b06      	ldr	r3, [pc, #24]	; (80002c0 <ConfigureTimer3+0x34>)
  80002a6:	f240 32e7 	movw	r2, #999	; 0x3e7
  80002aa:	62da      	str	r2, [r3, #44]	; 0x2c
 
   /* Finally enable TIM4 module */
-  TIM4->TIM_CR1 = (1<<0);
+  TIM4->CR1 = (1<<0);
  80002ac:	4b04      	ldr	r3, [pc, #16]	; (80002c0 <ConfigureTimer3+0x34>)
  80002ae:	2201      	movs	r2, #1
  80002b0:	601a      	str	r2, [r3, #0]

@@ -1,17 +1,17 @@
-20:29:55 **** Incremental Build of configuration Debug for project GPIO_ReadAnalog_value ****
+19:44:11 **** Incremental Build of configuration Debug for project ADC_UART ****
 make -j4 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F401CCUx -DSTM32 -DSTM32F4 -c -I../Inc -I"D:/MY Learning/ST_workspace/Driver_development/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-../Src/main.c:23:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   23 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
       |    ^~~~~~~
-arm-none-eabi-gcc -o "GPIO_ReadAnalog_value.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\GPIO_ReadAnalog_value\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GPIO_ReadAnalog_value.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: GPIO_ReadAnalog_value.elf
+arm-none-eabi-gcc -o "ADC_UART.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MY Learning\ST_workspace\Driver_development\ADC_UART\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_UART.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC_UART.elf
  
-arm-none-eabi-size  GPIO_ReadAnalog_value.elf 
-arm-none-eabi-objdump -h -S GPIO_ReadAnalog_value.elf  > "GPIO_ReadAnalog_value.list"
+arm-none-eabi-size  ADC_UART.elf 
+arm-none-eabi-objdump -h -S ADC_UART.elf  > "ADC_UART.list"
    text	   data	    bss	    dec	    hex	filename
-   5088	    100	   1900	   7088	   1bb0	GPIO_ReadAnalog_value.elf
+    656	      8	   1568	   2232	    8b8	ADC_UART.elf
 Finished building: default.size.stdout
  
-Finished building: GPIO_ReadAnalog_value.list
+Finished building: ADC_UART.list
  

@@ -26,12 +26,20 @@
 int main(void)
 {
 
- Rcc->AHB1ENR |=(1<<2);
+	 RCC->AHB1ENR |=(1<<0);
 
- Gpioc->MODER &= ~(3<<26);
- Gpioc->MODER |= (1<<26);
-    /* Loop forever */
+	 GPIOA->MODER &= ~(3<<0);
+	 GPIOA->MODER |= (1<<0);
+	 GPIOA->PUPDR |= (1<<0);
+		/* Loop forever */
+	while(1)
+	{
 
- Gpioc->ODR |=(0<<13);
-	for(;;);
+
+		GPIOA->ODR ^=(1<<0);
+		for(int i=0; i<100000;i++);
+//	GPIOA->ODR |=(1<<0);
+
+	}
+
 }

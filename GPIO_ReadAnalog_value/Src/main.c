@@ -33,6 +33,7 @@ void config_adc()
 	//ADC on
 	ADC->CR[1] |= (1<<0);
 
+
 	//Need to understand
 	ADC->SMPR[1] |= (7<<0);
 

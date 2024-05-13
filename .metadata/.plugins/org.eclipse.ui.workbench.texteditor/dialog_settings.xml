@@ -6,12 +6,17 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="GPIO"/>
+		<item key="selection" value="GPIOA"/>
 		<list key="findhistory">
+			<item value="GPIOB"/>
+			<item value="Port C"/>
+			<item value="GPIOC"/>
 			<item value="gpio"/>
 			<item value="__IO"/>
 		</list>
 		<list key="replacehistory">
+			<item value="GPIOA"/>
+			<item value="Port A"/>
 			<item value="_vo"/>
 		</list>
 	</section>

@@ -53,7 +53,8 @@ LED_BUTTON_EXT_IRQ.list \
 
 
 # All Target
-all: main-build
+all:
+	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
 
 # Main-build Target
 main-build: LED_BUTTON_EXT_IRQ.elf secondary-outputs
@@ -79,6 +80,10 @@ clean:
 	-$(RM) LED_BUTTON_EXT_IRQ.elf LED_BUTTON_EXT_IRQ.list LED_BUTTON_EXT_IRQ.map default.size.stdout
 	-@echo ' '
 
+post-build:
+	arm-none-eabi-objcopy -O ihex LED_BUTTON_EXT_IRQ.elf LED_BUTTON_EXT_IRQ.hex
+	-@echo ' '
+
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
 
 fail-specified-linker-script-missing:
@@ -88,6 +93,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified post-build
 
 -include ../makefile.targets

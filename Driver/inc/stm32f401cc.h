@@ -82,11 +82,6 @@ typedef struct{
 
 
 
-
-
-
-
-
 /* structure for the GPIO*/
 typedef struct{
 	_vo uint32_t  MODER;
@@ -252,5 +247,21 @@ typedef struct
 } ADC_TypeDef;
 
 #define ADC 			((ADC_TypeDef*)ADC1_BASEADDR)
+
+
+typedef struct
+{
+	_vo uint32_t SR;  	/*!< USART status register,						Address offset: 0x00 */
+	_vo uint32_t DR;   	/*!< USART data register,						Address offset: 0x04 */
+	_vo uint32_t BRR; 	/*!< USART Baud Rate register,  				Address offset: 0x08 */
+	_vo uint32_t CR1; 	/*!< Control register 1,						Address offset: 0x0C */
+	_vo uint32_t CR2; 	/*!< Control register 2,   						Address offset: 0x10 */
+	_vo uint32_t CR3; 	/*!< Control register 3,						Address offset: 0x14 */
+	_vo uint32_t GTPR; 	/*!< USART Guard time and prescaler register,   Address offset: 0x18 */
+
+}usart_TypeDef;
+
+
+#define USART ((usart_TypeDef*)USART1_BASEADDR)
 
 #endif /* STM32F401CC_H_ */

@@ -26,29 +26,29 @@
 int main(void)
 {
     /* Loop forever */
-	  /* Enable the AHB clock all GPIO port C */
-	  RCC->AHB1ENR |= (1<<2);
-	  /* set  Port C 14 pin as input mode */
-	  GPIOC->MODER &= ~(3<<28);
-	  /* set  Port C 13 pin as output mode */
-	  GPIOC->MODER |= (1<<26);
-	  /* clearing the 14 pin PUPDR register */
-	  GPIOC->PUPDR &= ~(3<<28);
-	  /* set Port C 14th as PULLUP mode */
-	  GPIOC->PUPDR |= (1<<28);
+	  /* Enable the AHB clock all GPIO Port A */
+	  RCC->AHB1ENR |= (1<<0);
+	  /* set  Port A 1 pin as input mode */
+	  GPIOA->MODER &= ~(3<<2);
+	  /* set  Port A 0 pin as output mode */
+	  GPIOA->MODER |= (1<<0);
+	  /* set Port A pin 1 as PULLUP mode */
+	  GPIOA->PUPDR &= ~(3<<2);
+	  GPIOA->PUPDR |= (1<<2);
 
 	  uint8_t data =0;
 
 		while(1)
 		{
-			   if((GPIOC->IDR & (1<<14))== 0)
+			   if((GPIOA->IDR & (1<<1))== 0)
 			   {
 				   data =0;
-				   GPIOC->ODR |= (1<<13);
+
+				   GPIOA->ODR &= ~(1<<0);
 			   }
 			   else {
 				   data = 1;
-				   GPIOC->ODR &= ~(1<<13);
+				   GPIOA->ODR |= (1<<0);
 			   }
 		}
 

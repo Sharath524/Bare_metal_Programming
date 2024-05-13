@@ -21,40 +21,74 @@
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
-
-int main(void)
+void EXTI1_IRQHandler()
 {
+
+
+				   if((GPIOA->ODR & (1<<1))== 0)
+				   {
+
+
+					   GPIOA->ODR &= ~(1<<0);
+
+				   }
+				   else {
+
+					   GPIOA->ODR |= (1<<0);
+				   }  // Clear the interrupt flag by writing a 1
+				   EXTI->PR |= (1<<1);
+
+}
+void Push_button_init()
+{
+	/*Enables the GPIOA clock */
+	RCC->AHB1ENR |= (1<<0);
+
+	/*Set's the GPIOB pin 0 in Input Mode using MODER register*/
+	GPIOA->MODER &= ~(3<<2);
+
+	/*Pull_up to port b pin 0 */
+	GPIOA->PUPDR &= ~(3<<2);
+	GPIOA->PUPDR |= (1<<2);
+}
+void LED_init(){
+
+	 GPIOA->MODER |= (1<<0); // set the PORTA PIN0 in Output Mode
+	 GPIOA->ODR  |= (1<<0); // set the LED initiallly HIGH
+}
+void EXTI0_Init()
+{
+	Push_button_init();
 	/*Enables the SYSCFG Clock*/
 	RCC->APB2ENR |= (1<<14);
 
+	/*Enables the source input of Port A Pin 0 External_interrupt 0 enabled*/
 	SYSCFG->EXTICR1 &= ~(15<<4);
-	/*Enables the source input of Port B Pin 0 External_interrupt 0 enabled*/
-	SYSCFG->EXTICR1 |= (1<<0);
 
-	/*Enables the GPIOB clock */
-	RCC->AHB1ENR |= (1<<1);
-
-	/*Set's the GPIOB pin 0 in Input Mode using MODER register*/
-	GPIOB->MODER &= ~(3<<0);
-
-	/*clears the GPIOB pin 0 */
-	GPIOB->PUPDR &= ~(3<<0);
-
-	/*Pull_up to port b pin 0 */
-	GPIOB->PUPDR |= (1<<0);
-
-	/*Enable to port b pin 0  */
-	EXTI->IMR  |=(1<<0);
+	/*Enable to port A pin 0  */
+	EXTI->IMR  |=(1<<1);
 
 	/*Interrupt event will be executed at falling edge for port b pin 0 */
-	EXTI->FTSR  |=(1<<0);
+	EXTI->FTSR  |= (1<<1);
 
 	/* clears the rising edge event for the Portb pin 0*/
 	EXTI->RTSR &= ~(1<<0);
 
-	NVIC->IP[6] = (1 << 4);
+	NVIC->IP[7] = (1 << 4);
 
-	NVIC->ISER[6>>5] |= (1 << (6 % 32));
+	NVIC->ISER[7>>5] |= (1 << (7 % 32));
+	/*Disable the SYSCFG Clock*/
+	RCC->APB2ENR &= ~(1<<14);
+}
+
+int main(void)
+{
+
+	EXTI0_Init();
+	LED_init();
+	while(1);
+
 
 }
 /*Reference https://hackmd.io/@hrbenitez/158_2s2223_Int_Tim */
+//TO DO-> Need to implement the UART test the EXternal IRq
